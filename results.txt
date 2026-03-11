@@ -1,600 +1,294 @@
-WARNING! There is already a bitcoind process running on this system. Tests may fail unexpectedly due to resource contention!
-30/283 - p2p_dns_seeds.py failed, Duration: 28 s
-
-stdout:
-2026-03-09T14:15:42.364753Z TestFramework (INFO): PRNG seed is: 8489633424482506790
-2026-03-09T14:15:42.366134Z TestFramework (INFO): Initializing test directory /tmp/test_runner_₿_🏃_20260309_170021/p2p_dns_seeds_251
-2026-03-09T14:15:43.161111Z TestFramework (INFO): Check that setting -connect disables -dnsseed by default
-2026-03-09T14:15:49.119693Z TestFramework (INFO): Check that running -connect and -dnsseed means DNS logic runs.
-2026-03-09T14:15:52.091227Z TestFramework (INFO): Check that running -forcednsseed and -dnsseed=0 throws an error.
-2026-03-09T14:15:53.084699Z TestFramework (INFO): Check that running -forcednsseed and -connect throws an error.
-2026-03-09T14:15:55.492324Z TestFramework (INFO): Check that we *do not* query DNS seeds if we have 2 outbound connections
-2026-03-09T14:16:09.999829Z TestFramework (ERROR): Unexpected exception:
-Traceback (most recent call last):
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_framework.py", line 142, in main
-    self.run_test()
-  File "/home/ann_karoki/bitcoin/build/test/functional/p2p_dns_seeds.py", line 22, in run_test
-    self.existing_outbound_connections_test()
-  File "/home/ann_karoki/bitcoin/build/test/functional/p2p_dns_seeds.py", line 65, in existing_outbound_connections_test
-    with self.nodes[0].assert_debug_log(expected_msgs=["P2P peers available. Skipped DNS seeding."], timeout=12):
-  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
-    next(self.gen)
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_node.py", line 607, in assert_debug_log
-    self._raise_assertion_error(f'Expected message(s) {remaining_expected!s} '
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_node.py", line 241, in _raise_assertion_error
-    raise AssertionError(self._node_msg(msg))
-AssertionError: [node 0] Expected message(s) ['P2P peers available. Skipped DNS seeding.'] not found in log:
-
- - 2026-03-09T14:15:57.977330Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:43632
- - 2026-03-09T14:15:57.977562Z [http_pool_1] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=addconnection user=__cookie__
- - 2026-03-09T14:15:57.977679Z [http_pool_1] [net.cpp:393] [ConnectNode] [net] trying v1 connection (outbound-full-relay) to 127.0.0.1:14023, lastseen=0.0hrs
- - 2026-03-09T14:15:57.978040Z [http_pool_1] [net.cpp:4007] [CNode] [net] Added connection peer=0
- - 2026-03-09T14:15:58.015561Z [msghand] [net.cpp:4075] [PushMessage] [net] sending version (114 bytes) peer=0
- - 2026-03-09T14:15:58.015816Z [msghand] [net_processing.cpp:1591] [PushNodeVersion] [net] send version message: version=70016, blocks=0, txrelay=1, peer=0
- - 2026-03-09T14:15:58.017853Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: version (111 bytes) peer=0
- - 2026-03-09T14:15:58.018817Z [msghand] [net_processing.cpp:3699] [ProcessMessage] [net] receive version message: /python-p2p-tester:0.0.3/: version 70016, blocks=-1, us=0.0.0.0:0, txrelay=1, peer=0
- - 2026-03-09T14:15:58.018835Z [msghand] [net.cpp:4075] [PushMessage] [net] sending wtxidrelay (0 bytes) peer=0
- - 2026-03-09T14:15:58.018949Z [msghand] [net.cpp:4075] [PushMessage] [net] sending sendaddrv2 (0 bytes) peer=0
- - 2026-03-09T14:15:58.019006Z [msghand] [net.cpp:4075] [PushMessage] [net] sending verack (0 bytes) peer=0
- - 2026-03-09T14:15:58.019126Z [msghand] [net.cpp:4075] [PushMessage] [net] sending getaddr (0 bytes) peer=0
- - 2026-03-09T14:15:58.019191Z [msghand] [node/timeoffsets.cpp:30] [Add] [net] Added time offset -1s, total samples 1
- - 2026-03-09T14:15:58.019223Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: wtxidrelay (0 bytes) peer=0
- - 2026-03-09T14:15:58.019243Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: verack (0 bytes) peer=0
- - 2026-03-09T14:15:58.019265Z [msghand] [net_processing.cpp:3842] [ProcessMessage] New outbound-full-relay peer connected: transport: v1, version: 70016, blocks=-1 peer=0
- - 2026-03-09T14:15:58.019282Z [msghand] [net.cpp:4075] [PushMessage] [net] sending sendcmpct (9 bytes) peer=0
- - 2026-03-09T14:15:58.019340Z [msghand] [net.cpp:4075] [PushMessage] [net] sending ping (8 bytes) peer=0
- - 2026-03-09T14:15:58.019422Z [msghand] [net.cpp:4075] [PushMessage] [net] sending getheaders (69 bytes) peer=0
- - 2026-03-09T14:15:58.019476Z [msghand] [net_processing.cpp:5811] [SendMessages] [net] initial getheaders (0) to peer=0 (startheight:-1)
- - 2026-03-09T14:15:58.019509Z [msghand] [net.cpp:4075] [PushMessage] [net] sending feefilter (8 bytes) peer=0
- - 2026-03-09T14:15:58.022277Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: pong (8 bytes) peer=0
- - 2026-03-09T14:15:58.026839Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: ping (8 bytes) peer=0
- - 2026-03-09T14:15:58.026901Z [msghand] [net.cpp:4075] [PushMessage] [net] sending pong (8 bytes) peer=0
- - 2026-03-09T14:15:58.027083Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: ping (8 bytes) peer=0
- - 2026-03-09T14:15:58.027117Z [msghand] [net.cpp:4075] [PushMessage] [net] sending pong (8 bytes) peer=0
- - 2026-03-09T14:15:58.079707Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:43632
- - 2026-03-09T14:15:58.080004Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=addconnection user=__cookie__
- - 2026-03-09T14:15:58.080196Z [http_pool_0] [net.cpp:393] [ConnectNode] [net] trying v1 connection (outbound-full-relay) to 127.0.0.1:14022, lastseen=0.0hrs
- - 2026-03-09T14:15:58.086742Z [http_pool_0] [net.cpp:4007] [CNode] [net] Added connection peer=1
- - 2026-03-09T14:15:58.127345Z [msghand] [net.cpp:4075] [PushMessage] [net] sending version (114 bytes) peer=1
- - 2026-03-09T14:15:58.127581Z [msghand] [net_processing.cpp:1591] [PushNodeVersion] [net] send version message: version=70016, blocks=0, txrelay=1, peer=1
- - 2026-03-09T14:15:58.129347Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: version (111 bytes) peer=1
- - 2026-03-09T14:15:58.130303Z [msghand] [net_processing.cpp:3699] [ProcessMessage] [net] receive version message: /python-p2p-tester:0.0.3/: version 70016, blocks=-1, us=0.0.0.0:0, txrelay=1, peer=1
- - 2026-03-09T14:15:58.130328Z [msghand] [net.cpp:4075] [PushMessage] [net] sending wtxidrelay (0 bytes) peer=1
- - 2026-03-09T14:15:58.130468Z [msghand] [net.cpp:4075] [PushMessage] [net] sending sendaddrv2 (0 bytes) peer=1
- - 2026-03-09T14:15:58.130515Z [msghand] [net.cpp:4075] [PushMessage] [net] sending verack (0 bytes) peer=1
- - 2026-03-09T14:15:58.130613Z [msghand] [net.cpp:4075] [PushMessage] [net] sending getaddr (0 bytes) peer=1
- - 2026-03-09T14:15:58.130655Z [msghand] [node/timeoffsets.cpp:30] [Add] [net] Added time offset +0s, total samples 2
- - 2026-03-09T14:15:58.130696Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: wtxidrelay (0 bytes) peer=1
- - 2026-03-09T14:15:58.130722Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: verack (0 bytes) peer=1
- - 2026-03-09T14:15:58.130744Z [msghand] [net_processing.cpp:3842] [ProcessMessage] New outbound-full-relay peer connected: transport: v1, version: 70016, blocks=-1 peer=1
- - 2026-03-09T14:15:58.130760Z [msghand] [net.cpp:4075] [PushMessage] [net] sending sendcmpct (9 bytes) peer=1
- - 2026-03-09T14:15:58.130808Z [msghand] [net.cpp:4075] [PushMessage] [net] sending ping (8 bytes) peer=1
- - 2026-03-09T14:15:58.130856Z [msghand] [net.cpp:4075] [PushMessage] [net] sending feefilter (8 bytes) peer=1
- - 2026-03-09T14:15:58.133045Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: pong (8 bytes) peer=1
- - 2026-03-09T14:15:58.178229Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: ping (8 bytes) peer=1
- - 2026-03-09T14:15:58.178280Z [msghand] [net.cpp:4075] [PushMessage] [net] sending pong (8 bytes) peer=1
- - 2026-03-09T14:15:58.178402Z [msghand] [net_processing.cpp:3582] [ProcessMessage] [net] received: ping (8 bytes) peer=1
- - 2026-03-09T14:15:58.178422Z [msghand] [net.cpp:4075] [PushMessage] [net] sending pong (8 bytes) peer=1
-
-
-2026-03-09T14:16:10.156704Z TestFramework (INFO): Not stopping nodes as test failed. The dangling processes will be cleaned up later.
-2026-03-09T14:16:10.156968Z TestFramework (WARNING): Not cleaning up dir /tmp/test_runner_₿_🏃_20260309_170021/p2p_dns_seeds_251
-2026-03-09T14:16:10.157152Z TestFramework (ERROR): Test failed. Test logging available at /tmp/test_runner_₿_🏃_20260309_170021/p2p_dns_seeds_251/test_framework.log
-2026-03-09T14:16:10.157612Z TestFramework (ERROR): 
-2026-03-09T14:16:10.157928Z TestFramework (ERROR): Hint: Call /home/ann_karoki/bitcoin/test/functional/combine_logs.py '/tmp/test_runner_₿_🏃_20260309_170021/p2p_dns_seeds_251' to consolidate all logs
-2026-03-09T14:16:10.158096Z TestFramework (ERROR): 
-2026-03-09T14:16:10.158227Z TestFramework (ERROR): If this failure happened unexpectedly or intermittently, please file a bug and provide a link or upload of the combined log.
-2026-03-09T14:16:10.158394Z TestFramework (ERROR): https://github.com/bitcoin/bitcoin/issues
-2026-03-09T14:16:10.158584Z TestFramework (ERROR): 
-
-
-stderr:
-[node 0] Cleaning up leftover process
-
-
-43/283 - feature_config_args.py failed, Duration: 19 s
-
-stdout:
-2026-03-09T14:20:24.239624Z TestFramework (INFO): PRNG seed is: 5254055393295285089
-2026-03-09T14:20:24.245086Z TestFramework (INFO): Initializing test directory /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237
-2026-03-09T14:20:29.349165Z TestFramework (INFO): Test config args logging
-2026-03-09T14:20:33.330965Z TestFramework (INFO): Test seed peers
-2026-03-09T14:20:39.495014Z TestFramework (ERROR): Unexpected exception:
-Traceback (most recent call last):
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_framework.py", line 142, in main
-    self.run_test()
-  File "/home/ann_karoki/bitcoin/build/test/functional/feature_config_args.py", line 519, in run_test
-    self.test_seed_peers()
-  File "/home/ann_karoki/bitcoin/build/test/functional/feature_config_args.py", line 329, in test_seed_peers
-    with self.nodes[0].assert_debug_log(expected_msgs=[
-  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
-    next(self.gen)
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_node.py", line 607, in assert_debug_log
-    self._raise_assertion_error(f'Expected message(s) {remaining_expected!s} '
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_node.py", line 241, in _raise_assertion_error
-    raise AssertionError(self._node_msg(msg))
-AssertionError: [node 0] Expected message(s) ['Adding fixed seeds as -dnsseed=0 (or IPv4/IPv6 connections are disabled via -onlynet) and neither -addnode nor -seednode are provided\n'] not found in log:
-
- - 
- - 
- - 
- - 
- - 
- - 2026-03-09T14:20:36.953220Z [init] [init/common.cpp:156] [LogPackageVersion] Bitcoin Core version v30.99.0-d198635fa2d4 (release build)
- - 2026-03-09T14:20:36.953229Z [init] [init.cpp:770] [InitParameterInteraction] parameter interaction: -bind set -> setting -listen=1
- - 2026-03-09T14:20:36.953332Z [init] [init/common.cpp:102] [SetLoggingCategories] Log output may contain privacy-sensitive information. Be cautious when sharing logs.
- - 2026-03-09T14:20:36.953469Z [init] [kernel/context.cpp:20] [operator()] Using the 'sse4(1way);sse41(4way);avx2(8way)' SHA256 implementation
- - 2026-03-09T14:20:37.083127Z [init] [random.cpp:110] [ReportHardwareRand] Using RdSeed as an additional entropy source
- - 2026-03-09T14:20:37.083131Z [init] [random.cpp:113] [ReportHardwareRand] Using RdRand as an additional entropy source
- - 2026-03-09T14:20:37.096287Z [init] [init/common.cpp:124] [StartLogging] Default data directory /home/ann_karoki/.bitcoin
- - 2026-03-09T14:20:37.096308Z [init] [init/common.cpp:125] [StartLogging] Using data directory /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest
- - 2026-03-09T14:20:37.096344Z [init] [init/common.cpp:134] [StartLogging] Config file: /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/bitcoin.conf
- - 2026-03-09T14:20:37.096392Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: regtest="1"
- - 2026-03-09T14:20:37.096409Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] bind="127.0.0.1"
- - 2026-03-09T14:20:37.096423Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] discover="0"
- - 2026-03-09T14:20:37.096439Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] dnsseed="0"
- - 2026-03-09T14:20:37.096451Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] fallbackfee="0.0002"
- - 2026-03-09T14:20:37.096462Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] fixedseeds="0"
- - 2026-03-09T14:20:37.096474Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] keypool="1"
- - 2026-03-09T14:20:37.096489Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] listenonion="0"
- - 2026-03-09T14:20:37.096510Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] maxconnections="94"
- - 2026-03-09T14:20:37.096524Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] natpmp="0"
- - 2026-03-09T14:20:37.096542Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] par="2"
- - 2026-03-09T14:20:37.096555Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] peertimeout="999999999"
- - 2026-03-09T14:20:37.096568Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] port="13844"
- - 2026-03-09T14:20:37.096581Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] printtoconsole="0"
- - 2026-03-09T14:20:37.096601Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] rpcdoccheck="1"
- - 2026-03-09T14:20:37.096616Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] rpcport="18844"
- - 2026-03-09T14:20:37.096654Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] rpcservertimeout="99000"
- - 2026-03-09T14:20:37.096671Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] rpcthreads="2"
- - 2026-03-09T14:20:37.096694Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] server="1"
- - 2026-03-09T14:20:37.096714Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] shrinkdebugfile="0"
- - 2026-03-09T14:20:37.096727Z [init] [common/args.cpp:884] [logArgsPrefix] Config file arg: [regtest] unsafesqlitesync="1"
- - 2026-03-09T14:20:37.096743Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: datadir="/tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0"
- - 2026-03-09T14:20:37.096829Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: debug=""
- - 2026-03-09T14:20:37.096848Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: debugexclude="libevent"
- - 2026-03-09T14:20:37.096862Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: debugexclude="leveldb"
- - 2026-03-09T14:20:37.096878Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: debugexclude="rand"
- - 2026-03-09T14:20:37.096900Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: dnsseed="0"
- - 2026-03-09T14:20:37.096915Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: fixedseeds="1"
- - 2026-03-09T14:20:37.096929Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: loglevel="trace"
- - 2026-03-09T14:20:37.096944Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: logratelimit=false
- - 2026-03-09T14:20:37.096964Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: logsourcelocations=""
- - 2026-03-09T14:20:37.096983Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: logthreadnames=""
- - 2026-03-09T14:20:37.096997Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: logtimemicros=""
- - 2026-03-09T14:20:37.097011Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: uacomment="testnode0"
- - 2026-03-09T14:20:37.097026Z [init] [common/args.cpp:884] [logArgsPrefix] Command-line arg: v2transport="0"
- - 2026-03-09T14:20:37.097042Z [init] [init.cpp:1441] [AppInitMain] Using at most 94 automatic connections (10240 file descriptors available)
- - 2026-03-09T14:20:37.097305Z [init] [init.cpp:1481] [AppInitMain] Log rate limiting disabled
- - 2026-03-09T14:20:37.108125Z [scheduler] [util/thread.cpp:20] [TraceThread] scheduler thread start
- - 2026-03-09T14:20:37.163560Z [init] [httpserver.cpp:166] [InitHTTPAllowList] [http] Allowing HTTP connections from: 127.0.0.0/8 ::1/128 
- - 2026-03-09T14:20:37.163731Z [init] [httpserver.cpp:342] [HTTPBindAddresses] Binding RPC on address ::1 port 18844
- - 2026-03-09T14:20:37.164042Z [init] [httpserver.cpp:342] [HTTPBindAddresses] Binding RPC on address 127.0.0.1 port 18844
- - 2026-03-09T14:20:37.164194Z [init] [httpserver.cpp:418] [InitHTTPServer] [http] Initialized HTTP server
- - 2026-03-09T14:20:37.164219Z [init] [httpserver.cpp:420] [InitHTTPServer] [http] set work queue of depth 64
- - 2026-03-09T14:20:37.164231Z [init] [rpc/server.cpp:275] [StartRPC] [rpc] Starting RPC
- - 2026-03-09T14:20:37.164244Z [init] [httprpc.cpp:333] [StartHTTPRPC] [rpc] Starting HTTP RPC server
- - 2026-03-09T14:20:37.164487Z [init] [rpc/request.cpp:140] [GenerateAuthCookie] Generated RPC authentication cookie /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/.cookie
- - 2026-03-09T14:20:37.164519Z [init] [rpc/request.cpp:141] [GenerateAuthCookie] Permissions used for cookie: rw-------
- - 2026-03-09T14:20:37.164542Z [init] [httprpc.cpp:265] [InitRPCAuthentication] Using random cookie authentication.
- - 2026-03-09T14:20:37.164604Z [init] [httpserver.cpp:690] [RegisterHTTPHandler] [http] Registering HTTP handler for / (exactmatch 1)
- - 2026-03-09T14:20:37.164628Z [init] [httpserver.cpp:690] [RegisterHTTPHandler] [http] Registering HTTP handler for /wallet/ (exactmatch 0)
- - 2026-03-09T14:20:37.164686Z [init] [httpserver.cpp:441] [StartHTTPServer] Starting HTTP server with 2 worker threads
- - 2026-03-09T14:20:37.165118Z [http_pool_0] [util/thread.cpp:20] [TraceThread] http_pool_0 thread start
- - 2026-03-09T14:20:37.165325Z [init] [wallet/load.cpp:53] [VerifyWallets] Using wallet directory /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest
- - 2026-03-09T14:20:37.165370Z [init] [wallet/walletdb.cpp:69] [LogDBInfo] Using SQLite Version 3.45.1
- - 2026-03-09T14:20:37.165387Z [init] [noui.cpp:56] [noui_InitMessage] init message: Verifying wallet(s)…
- - 2026-03-09T14:20:37.165478Z [init] [init.cpp:1631] [AppInitMain] Using /16 prefix for IP bucketing
- - 2026-03-09T14:20:37.165492Z [init] [noui.cpp:56] [noui_InitMessage] init message: Loading P2P addresses…
- - 2026-03-09T14:20:37.176662Z [http_pool_1] [util/thread.cpp:20] [TraceThread] http_pool_1 thread start
- - 2026-03-09T14:20:37.178791Z [http] [httpserver.cpp:302] [ThreadHTTP] [http] Entering http event loop
- - 2026-03-09T14:20:37.179259Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:51302
- - 2026-03-09T14:20:37.179386Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:37.191356Z [init] [logging/timer.h:58] [Log] [addrman] CheckAddrman: new 0, tried 0, total 0 started
- - 2026-03-09T14:20:37.191711Z [init] [logging/timer.h:58] [Log] [addrman] CheckAddrman: completed (0.31ms)
- - 2026-03-09T14:20:37.191746Z [init] [addrdb.cpp:207] [LoadAddrman] Loaded 0 addresses from peers.dat  0ms
- - 2026-03-09T14:20:37.192777Z [init] [noui.cpp:56] [noui_InitMessage] init message: Loading banlist…
- - 2026-03-09T14:20:37.192927Z [init] [banman.cpp:39] [LoadBanlist] [net] Loaded 0 banned node addresses/subnets  0ms
- - 2026-03-09T14:20:37.192974Z [init] [net.cpp:2434] [SetTryNewOutboundPeer] [net] setting try another outbound peer=false
- - 2026-03-09T14:20:37.192991Z [init] [net.cpp:3356] [SetNetworkActive] SetNetworkActive: true
- - 2026-03-09T14:20:37.226157Z [init] [policy/fees/block_policy_estimator.cpp:473] [Read] [estimatefee] Reading estimates: 237 buckets counting confirms up to 48 blocks
- - 2026-03-09T14:20:37.226727Z [init] [policy/fees/block_policy_estimator.cpp:473] [Read] [estimatefee] Reading estimates: 237 buckets counting confirms up to 12 blocks
- - 2026-03-09T14:20:37.257785Z [init] [policy/fees/block_policy_estimator.cpp:473] [Read] [estimatefee] Reading estimates: 237 buckets counting confirms up to 1008 blocks
- - 2026-03-09T14:20:37.258307Z [init] [init.cpp:1833] [AppInitMain] Cache configuration:
- - 2026-03-09T14:20:37.258342Z [init] [init.cpp:1834] [AppInitMain] * Using 2.0 MiB for block index database
- - 2026-03-09T14:20:37.258360Z [init] [init.cpp:1845] [AppInitMain] * Using 8.0 MiB for chain state database
- - 2026-03-09T14:20:37.258447Z [init] [init.cpp:1326] [InitAndLoadChainstate] * Using 440.0 MiB for in-memory UTXO set (plus up to 286.1 MiB of unused mempool space)
- - 2026-03-09T14:20:37.258509Z [init] [checkqueue.h:147] [CCheckQueue] Script verification uses 1 additional threads
- - 2026-03-09T14:20:37.258834Z [init] [node/blockstorage.cpp:1220] [InitBlocksdirXorKey] Using obfuscation key for blocksdir *.dat files (/tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/blocks): '408cff0883b06523'
- - 2026-03-09T14:20:37.258888Z [init] [dbwrapper.cpp:237] [CDBWrapper] Opening LevelDB in /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/blocks/index
- - 2026-03-09T14:20:37.433541Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:51318
- - 2026-03-09T14:20:37.436972Z [http_pool_1] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:37.695515Z [init] [dbwrapper.cpp:245] [CDBWrapper] Opened LevelDB successfully
- - 2026-03-09T14:20:37.695566Z [init] [dbwrapper.cpp:261] [CDBWrapper] Using obfuscation key for /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/blocks/index: 0000000000000000
- - 2026-03-09T14:20:37.712900Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44538
- - 2026-03-09T14:20:37.713062Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:37.819946Z [init] [script/sigcache.cpp:35] [SignatureCache] Using 16 MiB out of 16 MiB requested for signature cache, able to store 524288 elements
- - 2026-03-09T14:20:37.992794Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44550
- - 2026-03-09T14:20:37.996001Z [http_pool_1] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:38.176811Z [init] [validation.cpp:2035] [ValidationCache] Using 16 MiB out of 16 MiB requested for script execution cache, able to store 524288 elements
- - 2026-03-09T14:20:38.176883Z [init] [noui.cpp:56] [noui_InitMessage] init message: Loading block index…
- - 2026-03-09T14:20:38.176903Z [init] [node/chainstate.cpp:157] [LoadChainstate] Validating signatures for all blocks.
- - 2026-03-09T14:20:38.176919Z [init] [node/chainstate.cpp:159] [LoadChainstate] Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
- - 2026-03-09T14:20:38.177282Z [init] [node/blockstorage.cpp:539] [LoadBlockIndexDB] Loading block index db: last block file = 0
- - 2026-03-09T14:20:38.177320Z [init] [node/blockstorage.cpp:543] [LoadBlockIndexDB] Loading block index db: last block file info: CBlockFileInfo(blocks=1, size=293, heights=0...0, time=2011-02-02...2011-02-02)
- - 2026-03-09T14:20:38.177342Z [init] [node/blockstorage.cpp:554] [LoadBlockIndexDB] Checking all blk files are present...
- - 2026-03-09T14:20:38.177448Z [init] [node/chainstate.cpp:87] [CompleteChainstateInitialization] Initializing chainstate Chainstate [ibd] @ height -1 (null)
- - 2026-03-09T14:20:38.177652Z [init] [dbwrapper.cpp:237] [CDBWrapper] Opening LevelDB in /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/chainstate
- - 2026-03-09T14:20:38.249696Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44564
- - 2026-03-09T14:20:38.249819Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:38.934613Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44568
- - 2026-03-09T14:20:38.934758Z [http_pool_1] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:39.199613Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44572
- - 2026-03-09T14:20:39.199750Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:39.343502Z [init] [dbwrapper.cpp:245] [CDBWrapper] Opened LevelDB successfully
- - 2026-03-09T14:20:39.356390Z [init] [dbwrapper.cpp:261] [CDBWrapper] Using obfuscation key for /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/node0/regtest/chainstate: 7530ef722d225427
- - 2026-03-09T14:20:39.380415Z [init] [validation.cpp:4612] [LoadChainTip] Loaded best chain: hashBestChain=0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206 height=0 date=2011-02-02T23:16:42Z progress=0.000002
- - 2026-03-09T14:20:39.380502Z [init] [noui.cpp:56] [noui_InitMessage] init message: Verifying blocks…
- - 2026-03-09T14:20:39.380533Z [init] [init.cpp:1414] [InitAndLoadChainstate] Block index and chainstate loaded
- - 2026-03-09T14:20:39.380630Z [init] [init.cpp:1949] [AppInitMain] Setting NODE_NETWORK in non-prune mode
- - 2026-03-09T14:20:39.381021Z [init] [init.cpp:2080] [AppInitMain] block tree size = 1
- - 2026-03-09T14:20:39.381042Z [init] [init.cpp:2093] [AppInitMain] nBestHeight = 0
- - 2026-03-09T14:20:39.381203Z [init] [net.cpp:3329] [BindListenPort] Bound to 127.0.0.1:13844
- - 2026-03-09T14:20:39.381461Z [init] [addrdb.cpp:239] [ReadAnchors] Loaded 0 addresses from "anchors.dat"
- - 2026-03-09T14:20:39.381700Z [init] [net.cpp:3491] [Start] 0 block-relay-only anchors will be tried for connections.
- - 2026-03-09T14:20:39.381732Z [init] [noui.cpp:56] [noui_InitMessage] init message: Starting network threads…
- - 2026-03-09T14:20:39.404168Z [initload] [util/thread.cpp:20] [TraceThread] initload thread start
- - 2026-03-09T14:20:39.404409Z [initload] [node/mempool_persist.cpp:77] [LoadMempool] Loading 0 mempool transactions from file...
- - 2026-03-09T14:20:39.404444Z [initload] [node/mempool_persist.cpp:149] [LoadMempool] Imported mempool transactions from file: 0 succeeded, 0 failed, 0 expired, 0 already there, 0 waiting for initial broadcast
- - 2026-03-09T14:20:39.404474Z [initload] [util/thread.cpp:22] [TraceThread] initload thread exit
- - 2026-03-09T14:20:39.420586Z [init] [net.cpp:3525] [Start] DNS seeding disabled
- - 2026-03-09T14:20:39.421431Z [init] [noui.cpp:56] [noui_InitMessage] init message: Done loading
- - 2026-03-09T14:20:39.421667Z [opencon] [util/thread.cpp:20] [TraceThread] opencon thread start
- - 2026-03-09T14:20:39.421985Z [msghand] [util/thread.cpp:20] [TraceThread] msghand thread start
- - 2026-03-09T14:20:39.423342Z [net] [util/thread.cpp:20] [TraceThread] net thread start
- - 2026-03-09T14:20:39.423557Z [addcon] [util/thread.cpp:20] [TraceThread] addcon thread start
- - 2026-03-09T14:20:39.452812Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44582
- - 2026-03-09T14:20:39.452949Z [http_pool_1] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getblockcount user=__cookie__
- - 2026-03-09T14:20:39.454490Z [http] [httpserver.cpp:232] [http_request_cb] [http] Received a POST request for / from 127.0.0.1:44582
- - 2026-03-09T14:20:39.454607Z [http_pool_0] [rpc/request.cpp:243] [parse] [rpc] ThreadRPCServer method=getmempoolinfo user=__cookie__
-
-
-2026-03-09T14:20:40.101754Z TestFramework (INFO): Not stopping nodes as test failed. The dangling processes will be cleaned up later.
-2026-03-09T14:20:40.102161Z TestFramework (WARNING): Not cleaning up dir /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237
-2026-03-09T14:20:40.102489Z TestFramework (ERROR): Test failed. Test logging available at /tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237/test_framework.log
-2026-03-09T14:20:40.102858Z TestFramework (ERROR): 
-2026-03-09T14:20:40.103264Z TestFramework (ERROR): Hint: Call /home/ann_karoki/bitcoin/test/functional/combine_logs.py '/tmp/test_runner_₿_🏃_20260309_170021/feature_config_args_237' to consolidate all logs
-2026-03-09T14:20:40.103487Z TestFramework (ERROR): 
-2026-03-09T14:20:40.103661Z TestFramework (ERROR): If this failure happened unexpectedly or intermittently, please file a bug and provide a link or upload of the combined log.
-2026-03-09T14:20:40.103941Z TestFramework (ERROR): https://github.com/bitcoin/bitcoin/issues
-2026-03-09T14:20:40.104102Z TestFramework (ERROR): 
-
-
-stderr:
-[node 0] Cleaning up leftover process
-
-
-154/283 - rpc_getblockfilter.py failed, Duration: 28 s
-
-stdout:
-2026-03-09T14:32:07.774978Z TestFramework (INFO): PRNG seed is: 3398425548738709000
-2026-03-09T14:32:07.777518Z TestFramework (INFO): Initializing test directory /tmp/test_runner_₿_🏃_20260309_170021/rpc_getblockfilter_127
-2026-03-09T14:32:30.526713Z TestFramework.utils (ERROR): wait_until() failed. Predicate: ''''
-        wait_until_helper_internal(lambda: not self.network_event_loop.is_running(), timeout=timeout)
-'''
-
-
-stderr:
-Traceback (most recent call last):
-  File "/home/ann_karoki/bitcoin/build/test/functional/rpc_getblockfilter.py", line 64, in <module>
-    GetBlockFilterTest(__file__).main()
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_framework.py", line 156, in main
-    exit_code = self.shutdown()
-                ^^^^^^^^^^^^^^^
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/test_framework.py", line 283, in shutdown
-    self.network_thread.close(timeout=self.options.timeout_factor * 10)
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/p2p.py", line 754, in close
-    wait_until_helper_internal(lambda: not self.network_event_loop.is_running(), timeout=timeout)
-  File "/home/ann_karoki/bitcoin/test/functional/test_framework/util.py", line 436, in wait_until_helper_internal
-    raise AssertionError("Predicate {} not true after {} seconds".format(predicate_source, timeout))
-AssertionError: Predicate ''''
-        wait_until_helper_internal(lambda: not self.network_event_loop.is_running(), timeout=timeout)
-''' not true after 10.0 seconds
-[node 1] Cleaning up leftover process
-[node 0] Cleaning up leftover process
-
-
-Remaining jobs: [feature_framework_startup_failures.py, p2p_handshake.py --v2transport, p2p_ibd_txrelay.py, p2p_seednode.py]
+Remaining jobs: [feature_framework_startup_failures.py, p2p_ibd_txrelay.py, p2p_permissions.py, p2p_seednode.py]
 Remaining jobs: [feature_framework_startup_failures.py, p2p_ibd_txrelay.py, p2p_seednode.py]
 Remaining jobs: [feature_framework_startup_failures.py, p2p_seednode.py]
 Remaining jobs: [feature_framework_startup_failures.py]
 
 TEST                                                   | STATUS    | DURATION
 
-example_test.py                                        | ✓ Passed  | 5 s
-feature_abortnode.py                                   | ✓ Passed  | 7 s
-feature_addrman.py                                     | ✓ Passed  | 8 s
-feature_anchors.py                                     | ✓ Passed  | 9 s
+example_test.py                                        | ✓ Passed  | 2 s
+feature_abortnode.py                                   | ✓ Passed  | 3 s
+feature_addrman.py                                     | ✓ Passed  | 9 s
+feature_anchors.py                                     | ✓ Passed  | 7 s
 feature_asmap.py                                       | ✓ Passed  | 16 s
-feature_assumeutxo.py                                  | ✓ Passed  | 126 s
-feature_assumevalid.py                                 | ✓ Passed  | 78 s
-feature_bind_extra.py                                  | ✓ Passed  | 23 s
-feature_bip68_sequence.py                              | ✓ Passed  | 170 s
-feature_block.py                                       | ✓ Passed  | 714 s
-feature_blocksdir.py                                   | ✓ Passed  | 4 s
-feature_blocksxor.py                                   | ✓ Passed  | 5 s
+feature_assumeutxo.py                                  | ✓ Passed  | 58 s
+feature_assumevalid.py                                 | ✓ Passed  | 22 s
+feature_bind_extra.py                                  | ✓ Passed  | 6 s
+feature_bip68_sequence.py                              | ✓ Passed  | 35 s
+feature_block.py                                       | ✓ Passed  | 287 s
+feature_blocksdir.py                                   | ✓ Passed  | 2 s
+feature_blocksxor.py                                   | ✓ Passed  | 4 s
 feature_chain_tiebreaks.py                             | ✓ Passed  | 4 s
-feature_cltv.py                                        | ✓ Passed  | 6 s
-feature_coinstatsindex.py                              | ✓ Passed  | 30 s
-feature_csv_activation.py                              | ✓ Passed  | 83 s
+feature_cltv.py                                        | ✓ Passed  | 3 s
+feature_coinstatsindex.py                              | ✓ Passed  | 18 s
+feature_config_args.py                                 | ✓ Passed  | 56 s
+feature_csv_activation.py                              | ✓ Passed  | 27 s
 feature_dersig.py                                      | ✓ Passed  | 3 s
-feature_dirsymlinks.py                                 | ✓ Passed  | 2 s
-feature_discover.py                                    | ✓ Passed  | 8 s
+feature_dirsymlinks.py                                 | ✓ Passed  | 1 s
+feature_discover.py                                    | ✓ Passed  | 5 s
 feature_fastprune.py                                   | ✓ Passed  | 2 s
-feature_fee_estimation.py                              | ✓ Passed  | 281 s
-feature_filelock.py                                    | ✓ Passed  | 4 s
-feature_framework_miniwallet.py                        | ✓ Passed  | 29 s
-feature_framework_startup_failures.py                  | ✓ Passed  | 10 s
-feature_framework_testshell.py                         | ✓ Passed  | 3 s
-feature_framework_unit_tests.py                        | ✓ Passed  | 61 s
+feature_fee_estimation.py                              | ✓ Passed  | 163 s
+feature_filelock.py                                    | ✓ Passed  | 2 s
+feature_framework_miniwallet.py                        | ✓ Passed  | 18 s
+feature_framework_startup_failures.py                  | ✓ Passed  | 9 s
+feature_framework_testshell.py                         | ✓ Passed  | 2 s
+feature_framework_unit_tests.py                        | ✓ Passed  | 23 s
 feature_help.py                                        | ✓ Passed  | 0 s
 feature_includeconf.py                                 | ✓ Passed  | 8 s
-feature_init.py                                        | ✓ Passed  | 80 s
-feature_loadblock.py                                   | ✓ Passed  | 11 s
-feature_logging.py                                     | ✓ Passed  | 21 s
-feature_maxtipage.py                                   | ✓ Passed  | 37 s
-feature_maxuploadtarget.py                             | ✓ Passed  | 143 s
-feature_minchainwork.py                                | ✓ Passed  | 14 s
-feature_notifications.py                               | ✓ Passed  | 33 s
-feature_nulldummy.py                                   | ✓ Passed  | 2 s
-feature_port.py                                        | ✓ Passed  | 11 s
-feature_posix_fs_permissions.py                        | ✓ Passed  | 2 s
+feature_init.py                                        | ✓ Passed  | 64 s
+feature_loadblock.py                                   | ✓ Passed  | 6 s
+feature_logging.py                                     | ✓ Passed  | 12 s
+feature_maxtipage.py                                   | ✓ Passed  | 20 s
+feature_maxuploadtarget.py                             | ✓ Passed  | 79 s
+feature_minchainwork.py                                | ✓ Passed  | 13 s
+feature_notifications.py                               | ✓ Passed  | 14 s
+feature_nulldummy.py                                   | ✓ Passed  | 1 s
+feature_port.py                                        | ✓ Passed  | 5 s
+feature_posix_fs_permissions.py                        | ✓ Passed  | 1 s
 feature_presegwit_node_upgrade.py                      | ✓ Passed  | 4 s
-feature_proxy.py                                       | ✓ Passed  | 32 s
-feature_rbf.py                                         | ✓ Passed  | 33 s
-feature_reindex.py                                     | ✓ Passed  | 38 s
-feature_reindex_init.py                                | ✓ Passed  | 7 s
+feature_proxy.py                                       | ✓ Passed  | 16 s
+feature_rbf.py                                         | ✓ Passed  | 18 s
+feature_reindex.py                                     | ✓ Passed  | 16 s
+feature_reindex_init.py                                | ✓ Passed  | 5 s
 feature_reindex_readonly.py                            | ✓ Passed  | 6 s
-feature_remove_pruned_files_on_startup.py              | ✓ Passed  | 10 s
-feature_segwit.py --v1transport                        | ✓ Passed  | 12 s
-feature_segwit.py --v2transport                        | ✓ Passed  | 19 s
-feature_settings.py                                    | ✓ Passed  | 14 s
+feature_remove_pruned_files_on_startup.py              | ✓ Passed  | 9 s
+feature_segwit.py --v1transport                        | ✓ Passed  | 8 s
+feature_segwit.py --v2transport                        | ✓ Passed  | 11 s
+feature_settings.py                                    | ✓ Passed  | 9 s
 feature_shutdown.py                                    | ✓ Passed  | 2 s
-feature_signet.py                                      | ✓ Passed  | 8 s
-feature_startupnotify.py                               | ✓ Passed  | 3 s
-feature_taproot.py                                     | ✓ Passed  | 790 s
-feature_uacomment.py                                   | ✓ Passed  | 5 s
-feature_utxo_set_hash.py                               | ✓ Passed  | 6 s
-feature_versionbits_warning.py                         | ✓ Passed  | 7 s
-interface_bitcoin_cli.py                               | ✓ Passed  | 27 s
-interface_http.py                                      | ✓ Passed  | 17 s
-interface_rest.py                                      | ✓ Passed  | 28 s
-interface_rpc.py                                       | ✓ Passed  | 10 s
-mempool_accept.py                                      | ✓ Passed  | 40 s
-mempool_accept_wtxid.py                                | ✓ Passed  | 21 s
-mempool_cluster.py                                     | ✓ Passed  | 91 s
-mempool_datacarrier.py                                 | ✓ Passed  | 7 s
-mempool_dust.py                                        | ✓ Passed  | 17 s
-mempool_ephemeral_dust.py                              | ✓ Passed  | 109 s
-mempool_expiry.py                                      | ✓ Passed  | 4 s
-mempool_limit.py                                       | ✓ Passed  | 63 s
-mempool_package_limits.py                              | ✓ Passed  | 12 s
-mempool_package_rbf.py                                 | ✓ Passed  | 46 s
-mempool_packages.py                                    | ✓ Passed  | 17 s
-mempool_persist.py                                     | ✓ Passed  | 46 s
-mempool_reorg.py                                       | ✓ Passed  | 17 s
-mempool_resurrect.py                                   | ✓ Passed  | 3 s
-mempool_sigoplimit.py                                  | ✓ Passed  | 21 s
-mempool_spend_coinbase.py                              | ✓ Passed  | 9 s
-mempool_truc.py                                        | ✓ Passed  | 59 s
-mempool_unbroadcast.py                                 | ✓ Passed  | 15 s
-mempool_updatefromblock.py                             | ✓ Passed  | 106 s
-mining_basic.py                                        | ✓ Passed  | 145 s
-mining_getblocktemplate_longpoll.py                    | ✓ Passed  | 91 s
-mining_mainnet.py                                      | ✓ Passed  | 29 s
-mining_prioritisetransaction.py                        | ✓ Passed  | 15 s
-mining_template_verification.py                        | ✓ Passed  | 6 s
-p2p_1p1c_network.py                                    | ✓ Passed  | 25 s
-p2p_add_connections.py                                 | ✓ Passed  | 13 s
-p2p_addr_relay.py                                      | ✓ Passed  | 32 s
+feature_signet.py                                      | ✓ Passed  | 11 s
+feature_startupnotify.py                               | ✓ Passed  | 5 s
+feature_taproot.py                                     | ✓ Passed  | 396 s
+feature_uacomment.py                                   | ✓ Passed  | 7 s
+feature_utxo_set_hash.py                               | ✓ Passed  | 4 s
+feature_versionbits_warning.py                         | ✓ Passed  | 4 s
+interface_bitcoin_cli.py                               | ✓ Passed  | 17 s
+interface_http.py                                      | ✓ Passed  | 10 s
+interface_rest.py                                      | ✓ Passed  | 11 s
+interface_rpc.py                                       | ✓ Passed  | 2 s
+mempool_accept.py                                      | ✓ Passed  | 16 s
+mempool_accept_wtxid.py                                | ✓ Passed  | 20 s
+mempool_cluster.py                                     | ✓ Passed  | 41 s
+mempool_datacarrier.py                                 | ✓ Passed  | 3 s
+mempool_dust.py                                        | ✓ Passed  | 12 s
+mempool_ephemeral_dust.py                              | ✓ Passed  | 90 s
+mempool_expiry.py                                      | ✓ Passed  | 3 s
+mempool_limit.py                                       | ✓ Passed  | 27 s
+mempool_package_limits.py                              | ✓ Passed  | 3 s
+mempool_package_rbf.py                                 | ✓ Passed  | 29 s
+mempool_packages.py                                    | ✓ Passed  | 9 s
+mempool_persist.py                                     | ✓ Passed  | 39 s
+mempool_reorg.py                                       | ✓ Passed  | 13 s
+mempool_resurrect.py                                   | ✓ Passed  | 2 s
+mempool_sigoplimit.py                                  | ✓ Passed  | 14 s
+mempool_spend_coinbase.py                              | ✓ Passed  | 2 s
+mempool_truc.py                                        | ✓ Passed  | 23 s
+mempool_unbroadcast.py                                 | ✓ Passed  | 14 s
+mempool_updatefromblock.py                             | ✓ Passed  | 93 s
+mining_basic.py                                        | ✓ Passed  | 89 s
+mining_getblocktemplate_longpoll.py                    | ✓ Passed  | 83 s
+mining_mainnet.py                                      | ✓ Passed  | 21 s
+mining_prioritisetransaction.py                        | ✓ Passed  | 7 s
+mining_template_verification.py                        | ✓ Passed  | 2 s
+p2p_1p1c_network.py                                    | ✓ Passed  | 15 s
+p2p_add_connections.py                                 | ✓ Passed  | 10 s
+p2p_addr_relay.py                                      | ✓ Passed  | 24 s
 p2p_addr_selfannouncement.py                           | ✓ Passed  | 4 s
-p2p_addrfetch.py                                       | ✓ Passed  | 3 s
-p2p_addrv2_relay.py                                    | ✓ Passed  | 6 s
+p2p_addrfetch.py                                       | ✓ Passed  | 1 s
+p2p_addrv2_relay.py                                    | ✓ Passed  | 2 s
 p2p_block_sync.py --v1transport                        | ✓ Passed  | 6 s
-p2p_block_sync.py --v2transport                        | ✓ Passed  | 7 s
-p2p_blockfilters.py                                    | ✓ Passed  | 62 s
-p2p_blocksonly.py                                      | ✓ Passed  | 22 s
-p2p_compactblocks.py                                   | ✓ Passed  | 19 s
-p2p_compactblocks_blocksonly.py                        | ✓ Passed  | 5 s
-p2p_compactblocks_hb.py --v1transport                  | ✓ Passed  | 30 s
-p2p_compactblocks_hb.py --v2transport                  | ✓ Passed  | 28 s
-p2p_disconnect_ban.py --v1transport                    | ✓ Passed  | 17 s
-p2p_disconnect_ban.py --v2transport                    | ✓ Passed  | 16 s
-p2p_eviction.py                                        | ✓ Passed  | 6 s
-p2p_feefilter.py                                       | ✓ Passed  | 25 s
-p2p_filter.py                                          | ✓ Passed  | 10 s
-p2p_fingerprint.py                                     | ✓ Passed  | 3 s
-p2p_getaddr_caching.py                                 | ✓ Passed  | 37 s
-p2p_getdata.py                                         | ✓ Passed  | 3 s
-p2p_handshake.py                                       | ✓ Passed  | 5 s
-p2p_handshake.py --v2transport                         | ✓ Passed  | 6 s
-p2p_headers_sync_with_minchainwork.py                  | ✓ Passed  | 268 s
-p2p_i2p_ports.py                                       | ✓ Passed  | 2 s
-p2p_i2p_sessions.py                                    | ✓ Passed  | 3 s
-p2p_ibd_stalling.py --v1transport                      | ✓ Passed  | 13 s
-p2p_ibd_stalling.py --v2transport                      | ✓ Passed  | 29 s
+p2p_block_sync.py --v2transport                        | ✓ Passed  | 3 s
+p2p_blockfilters.py                                    | ✓ Passed  | 17 s
+p2p_blocksonly.py                                      | ✓ Passed  | 7 s
+p2p_compactblocks.py                                   | ✓ Passed  | 11 s
+p2p_compactblocks_blocksonly.py                        | ✓ Passed  | 3 s
+p2p_compactblocks_hb.py --v1transport                  | ✓ Passed  | 17 s
+p2p_compactblocks_hb.py --v2transport                  | ✓ Passed  | 16 s
+p2p_disconnect_ban.py --v1transport                    | ✓ Passed  | 5 s
+p2p_disconnect_ban.py --v2transport                    | ✓ Passed  | 4 s
+p2p_dns_seeds.py                                       | ✓ Passed  | 39 s
+p2p_eviction.py                                        | ✓ Passed  | 5 s
+p2p_feefilter.py                                       | ✓ Passed  | 8 s
+p2p_filter.py                                          | ✓ Passed  | 7 s
+p2p_fingerprint.py                                     | ✓ Passed  | 2 s
+p2p_getaddr_caching.py                                 | ✓ Passed  | 14 s
+p2p_getdata.py                                         | ✓ Passed  | 1 s
+p2p_handshake.py                                       | ✓ Passed  | 4 s
+p2p_handshake.py --v2transport                         | ✓ Passed  | 5 s
+p2p_headers_sync_with_minchainwork.py                  | ✓ Passed  | 43 s
+p2p_i2p_ports.py                                       | ✓ Passed  | 4 s
+p2p_i2p_sessions.py                                    | ✓ Passed  | 2 s
+p2p_ibd_stalling.py --v1transport                      | ✓ Passed  | 9 s
+p2p_ibd_stalling.py --v2transport                      | ✓ Passed  | 20 s
 p2p_ibd_txrelay.py                                     | ✓ Passed  | 3 s
-p2p_initial_headers_sync.py                            | ✓ Passed  | 6 s
-p2p_invalid_block.py --v1transport                     | ✓ Passed  | 4 s
-p2p_invalid_block.py --v2transport                     | ✓ Passed  | 5 s
-p2p_invalid_locator.py                                 | ✓ Passed  | 5 s
-p2p_invalid_messages.py                                | ✓ Passed  | 106 s
-p2p_invalid_tx.py --v1transport                        | ✓ Passed  | 6 s
-p2p_invalid_tx.py --v2transport                        | ✓ Passed  | 8 s
+p2p_initial_headers_sync.py                            | ✓ Passed  | 5 s
+p2p_invalid_block.py --v1transport                     | ✓ Passed  | 3 s
+p2p_invalid_block.py --v2transport                     | ✓ Passed  | 3 s
+p2p_invalid_locator.py                                 | ✓ Passed  | 3 s
+p2p_invalid_messages.py                                | ✓ Passed  | 49 s
+p2p_invalid_tx.py --v1transport                        | ✓ Passed  | 4 s
+p2p_invalid_tx.py --v2transport                        | ✓ Passed  | 5 s
 p2p_leak.py                                            | ✓ Passed  | 7 s
-p2p_leak_tx.py --v1transport                           | ✓ Passed  | 3 s
-p2p_leak_tx.py --v2transport                           | ✓ Passed  | 3 s
+p2p_leak_tx.py --v1transport                           | ✓ Passed  | 5 s
+p2p_leak_tx.py --v2transport                           | ✓ Passed  | 2 s
 p2p_message_capture.py                                 | ✓ Passed  | 2 s
-p2p_mutated_blocks.py                                  | ✓ Passed  | 3 s
+p2p_mutated_blocks.py                                  | ✓ Passed  | 8 s
 p2p_net_deadlock.py --v1transport                      | ✓ Passed  | 6 s
-p2p_net_deadlock.py --v2transport                      | ✓ Passed  | 5 s
-p2p_nobloomfilter_messages.py                          | ✓ Passed  | 4 s
-p2p_node_network_limited.py --v1transport              | ✓ Passed  | 59 s
-p2p_node_network_limited.py --v2transport              | ✓ Passed  | 59 s
-p2p_opportunistic_1p1c.py                              | ✓ Passed  | 320 s
-p2p_orphan_handling.py                                 | ✓ Passed  | 73 s
-p2p_outbound_eviction.py                               | ✓ Passed  | 9 s
-p2p_permissions.py                                     | ✓ Passed  | 35 s
-p2p_ping.py                                            | ✓ Passed  | 3 s
-p2p_private_broadcast.py                               | ✓ Passed  | 13 s
-p2p_seednode.py                                        | ✓ Passed  | 5 s
-p2p_segwit.py                                          | ✓ Passed  | 178 s
-p2p_sendheaders.py                                     | ✓ Passed  | 72 s
-p2p_sendtxrcncl.py                                     | ✓ Passed  | 19 s
-p2p_timeouts.py --v1transport                          | ✓ Passed  | 4 s
-p2p_timeouts.py --v2transport                          | ✓ Passed  | 9 s
-p2p_tx_download.py                                     | ✓ Passed  | 83 s
-p2p_tx_privacy.py                                      | ✓ Passed  | 4 s
-p2p_unrequested_blocks.py                              | ✓ Passed  | 8 s
-p2p_v2_encrypted.py                                    | ✓ Passed  | 18 s
-p2p_v2_misbehaving.py                                  | ✓ Passed  | 4 s
-p2p_v2_transport.py                                    | ✓ Passed  | 12 s
-rpc_bind.py --ipv4                                     | ✓ Passed  | 16 s
-rpc_bind.py --ipv6                                     | ✓ Passed  | 32 s
-rpc_bind.py --nonloopback                              | ✓ Passed  | 16 s
-rpc_blockchain.py --v1transport                        | ✓ Passed  | 103 s
-rpc_blockchain.py --v2transport                        | ✓ Passed  | 104 s
-rpc_createmultisig.py                                  | ✓ Passed  | 45 s
-rpc_decodescript.py                                    | ✓ Passed  | 2 s
-rpc_deprecated.py                                      | ✓ Passed  | 2 s
+p2p_net_deadlock.py --v2transport                      | ✓ Passed  | 7 s
+p2p_nobloomfilter_messages.py                          | ✓ Passed  | 2 s
+p2p_node_network_limited.py --v1transport              | ✓ Passed  | 17 s
+p2p_node_network_limited.py --v2transport              | ✓ Passed  | 31 s
+p2p_opportunistic_1p1c.py                              | ✓ Passed  | 122 s
+p2p_orphan_handling.py                                 | ✓ Passed  | 45 s
+p2p_outbound_eviction.py                               | ✓ Passed  | 8 s
+p2p_permissions.py                                     | ✓ Passed  | 30 s
+p2p_ping.py                                            | ✓ Passed  | 2 s
+p2p_private_broadcast.py                               | ✓ Passed  | 33 s
+p2p_seednode.py                                        | ✓ Passed  | 4 s
+p2p_segwit.py                                          | ✓ Passed  | 114 s
+p2p_sendheaders.py                                     | ✓ Passed  | 36 s
+p2p_sendtxrcncl.py                                     | ✓ Passed  | 14 s
+p2p_timeouts.py --v1transport                          | ✓ Passed  | 3 s
+p2p_timeouts.py --v2transport                          | ✓ Passed  | 3 s
+p2p_tx_download.py                                     | ✓ Passed  | 68 s
+p2p_tx_privacy.py                                      | ✓ Passed  | 15 s
+p2p_unrequested_blocks.py                              | ✓ Passed  | 5 s
+p2p_v2_encrypted.py                                    | ✓ Passed  | 10 s
+p2p_v2_misbehaving.py                                  | ✓ Passed  | 2 s
+p2p_v2_transport.py                                    | ✓ Passed  | 7 s
+rpc_bind.py --ipv4                                     | ✓ Passed  | 3 s
+rpc_bind.py --ipv6                                     | ✓ Passed  | 7 s
+rpc_bind.py --nonloopback                              | ✓ Passed  | 3 s
+rpc_blockchain.py --v1transport                        | ✓ Passed  | 41 s
+rpc_blockchain.py --v2transport                        | ✓ Passed  | 40 s
+rpc_createmultisig.py                                  | ✓ Passed  | 30 s
+rpc_decodescript.py                                    | ✓ Passed  | 1 s
+rpc_deprecated.py                                      | ✓ Passed  | 1 s
 rpc_deriveaddresses.py                                 | ✓ Passed  | 2 s
-rpc_deriveaddresses.py --usecli                        | ✓ Passed  | 2 s
-rpc_dumptxoutset.py                                    | ✓ Passed  | 2 s
+rpc_deriveaddresses.py --usecli                        | ✓ Passed  | 1 s
+rpc_dumptxoutset.py                                    | ✓ Passed  | 1 s
 rpc_estimatefee.py                                     | ✓ Passed  | 1 s
-rpc_generate.py                                        | ✓ Passed  | 6 s
-rpc_getblockfrompeer.py                                | ✓ Passed  | 22 s
-rpc_getblockstats.py                                   | ✓ Passed  | 2 s
-rpc_getchaintips.py                                    | ✓ Passed  | 16 s
-rpc_getdescriptoractivity.py                           | ✓ Passed  | 6 s
-rpc_getdescriptorinfo.py                               | ✓ Passed  | 5 s
-rpc_gettxspendingprevout.py                            | ✓ Passed  | 8 s
+rpc_generate.py                                        | ✓ Passed  | 4 s
+rpc_getblockfilter.py                                  | ✓ Passed  | 4 s
+rpc_getblockfrompeer.py                                | ✓ Passed  | 12 s
+rpc_getblockstats.py                                   | ✓ Passed  | 4 s
+rpc_getchaintips.py                                    | ✓ Passed  | 7 s
+rpc_getdescriptoractivity.py                           | ✓ Passed  | 3 s
+rpc_getdescriptorinfo.py                               | ✓ Passed  | 1 s
+rpc_gettxspendingprevout.py                            | ✓ Passed  | 4 s
 rpc_help.py                                            | ✓ Passed  | 3 s
-rpc_invalid_address_message.py                         | ✓ Passed  | 3 s
-rpc_invalidateblock.py                                 | ✓ Passed  | 4 s
-rpc_misc.py                                            | ✓ Passed  | 26 s
-rpc_named_arguments.py                                 | ✓ Passed  | 2 s
-rpc_net.py --v1transport                               | ✓ Passed  | 69 s
-rpc_net.py --v2transport                               | ✓ Passed  | 77 s
-rpc_orphans.py                                         | ✓ Passed  | 9 s
-rpc_packages.py                                        | ✓ Passed  | 35 s
-rpc_preciousblock.py                                   | ✓ Passed  | 3 s
-rpc_psbt.py                                            | ✓ Passed  | 35 s
-rpc_rawtransaction.py                                  | ✓ Passed  | 17 s
-rpc_scanblocks.py                                      | ✓ Passed  | 6 s
-rpc_scantxoutset.py                                    | ✓ Passed  | 29 s
-rpc_setban.py --v1transport                            | ✓ Passed  | 14 s
-rpc_setban.py --v2transport                            | ✓ Passed  | 14 s
-rpc_signer.py                                          | ✓ Passed  | 29 s
-rpc_signmessagewithprivkey.py                          | ✓ Passed  | 2 s
-rpc_signrawtransactionwithkey.py                       | ✓ Passed  | 4 s
-rpc_txoutproof.py                                      | ✓ Passed  | 16 s
-rpc_uptime.py                                          | ✓ Passed  | 2 s
-rpc_users.py                                           | ✓ Passed  | 47 s
-rpc_validateaddress.py                                 | ✓ Passed  | 3 s
-rpc_whitelist.py                                       | ✓ Passed  | 13 s
-tool_bitcoin.py                                        | ✓ Passed  | 3 s
+rpc_invalid_address_message.py                         | ✓ Passed  | 1 s
+rpc_invalidateblock.py                                 | ✓ Passed  | 2 s
+rpc_misc.py                                            | ✓ Passed  | 9 s
+rpc_named_arguments.py                                 | ✓ Passed  | 6 s
+rpc_net.py --v1transport                               | ✓ Passed  | 30 s
+rpc_net.py --v2transport                               | ✓ Passed  | 31 s
+rpc_orphans.py                                         | ✓ Passed  | 3 s
+rpc_packages.py                                        | ✓ Passed  | 10 s
+rpc_preciousblock.py                                   | ✓ Passed  | 5 s
+rpc_psbt.py                                            | ✓ Passed  | 38 s
+rpc_rawtransaction.py                                  | ✓ Passed  | 12 s
+rpc_scanblocks.py                                      | ✓ Passed  | 2 s
+rpc_scantxoutset.py                                    | ✓ Passed  | 17 s
+rpc_setban.py --v1transport                            | ✓ Passed  | 7 s
+rpc_setban.py --v2transport                            | ✓ Passed  | 6 s
+rpc_signer.py                                          | ✓ Passed  | 5 s
+rpc_signmessagewithprivkey.py                          | ✓ Passed  | 1 s
+rpc_signrawtransactionwithkey.py                       | ✓ Passed  | 2 s
+rpc_txoutproof.py                                      | ✓ Passed  | 5 s
+rpc_uptime.py                                          | ✓ Passed  | 3 s
+rpc_users.py                                           | ✓ Passed  | 22 s
+rpc_validateaddress.py                                 | ✓ Passed  | 1 s
+rpc_whitelist.py                                       | ✓ Passed  | 4 s
+tool_bitcoin.py                                        | ✓ Passed  | 0 s
 tool_rpcauth.py                                        | ✓ Passed  | 0 s
-tool_signet_miner.py                                   | ✓ Passed  | 88 s
-tool_utils.py                                          | ✓ Passed  | 6 s
-tool_utxo_to_sqlite.py                                 | ✓ Passed  | 18 s
-tool_wallet.py                                         | ✓ Passed  | 70 s
-wallet_abandonconflict.py                              | ✓ Passed  | 21 s
-wallet_address_types.py                                | ✓ Passed  | 30 s
-wallet_anchor.py                                       | ✓ Passed  | 5 s
-wallet_assumeutxo.py                                   | ✓ Passed  | 32 s
-wallet_avoid_mixing_output_types.py                    | ✓ Passed  | 16 s
-wallet_avoidreuse.py                                   | ✓ Passed  | 25 s
-wallet_backup.py                                       | ✓ Passed  | 37 s
-wallet_balance.py                                      | ✓ Passed  | 17 s
-wallet_basic.py                                        | ✓ Passed  | 60 s
-wallet_blank.py                                        | ✓ Passed  | 9 s
-wallet_bumpfee.py                                      | ✓ Passed  | 53 s
-wallet_change_address.py                               | ✓ Passed  | 21 s
-wallet_coinbase_category.py                            | ✓ Passed  | 5 s
-wallet_conflicts.py                                    | ✓ Passed  | 70 s
-wallet_create_tx.py                                    | ✓ Passed  | 12 s
-wallet_createwallet.py                                 | ✓ Passed  | 14 s
-wallet_createwallet.py --usecli                        | ✓ Passed  | 16 s
-wallet_createwalletdescriptor.py                       | ✓ Passed  | 5 s
-wallet_crosschain.py                                   | ✓ Passed  | 2 s
-wallet_descriptor.py                                   | ✓ Passed  | 21 s
-wallet_disable.py                                      | ✓ Passed  | 8 s
-wallet_encryption.py                                   | ✓ Passed  | 11 s
-wallet_fallbackfee.py                                  | ✓ Passed  | 3 s
-wallet_fast_rescan.py                                  | ✓ Passed  | 37 s
-wallet_fundrawtransaction.py                           | ✓ Passed  | 65 s
-wallet_gethdkeys.py                                    | ✓ Passed  | 5 s
-wallet_groups.py                                       | ✓ Passed  | 38 s
-wallet_hd.py                                           | ✓ Passed  | 20 s
-wallet_importdescriptors.py                            | ✓ Passed  | 55 s
-wallet_importprunedfunds.py                            | ✓ Passed  | 3 s
-wallet_keypool.py                                      | ✓ Passed  | 9 s
-wallet_keypool_topup.py                                | ✓ Passed  | 37 s
-wallet_labels.py                                       | ✓ Passed  | 7 s
+tool_signet_miner.py                                   | ✓ Passed  | 54 s
+tool_utils.py                                          | ✓ Passed  | 8 s
+tool_utxo_to_sqlite.py                                 | ✓ Passed  | 11 s
+tool_wallet.py                                         | ✓ Passed  | 33 s
+wallet_abandonconflict.py                              | ✓ Passed  | 15 s
+wallet_address_types.py                                | ✓ Passed  | 25 s
+wallet_anchor.py                                       | ✓ Passed  | 2 s
+wallet_assumeutxo.py                                   | ✓ Passed  | 23 s
+wallet_avoid_mixing_output_types.py                    | ✓ Passed  | 10 s
+wallet_avoidreuse.py                                   | ✓ Passed  | 19 s
+wallet_backup.py                                       | ✓ Passed  | 32 s
+wallet_balance.py                                      | ✓ Passed  | 34 s
+wallet_basic.py                                        | ✓ Passed  | 48 s
+wallet_blank.py                                        | ✓ Passed  | 2 s
+wallet_bumpfee.py                                      | ✓ Passed  | 51 s
+wallet_change_address.py                               | ✓ Passed  | 15 s
+wallet_coinbase_category.py                            | ✓ Passed  | 2 s
+wallet_conflicts.py                                    | ✓ Passed  | 49 s
+wallet_create_tx.py                                    | ✓ Passed  | 5 s
+wallet_createwallet.py                                 | ✓ Passed  | 7 s
+wallet_createwallet.py --usecli                        | ✓ Passed  | 8 s
+wallet_createwalletdescriptor.py                       | ✓ Passed  | 2 s
+wallet_crosschain.py                                   | ✓ Passed  | 5 s
+wallet_descriptor.py                                   | ✓ Passed  | 9 s
+wallet_disable.py                                      | ✓ Passed  | 1 s
+wallet_encryption.py                                   | ✓ Passed  | 7 s
+wallet_fallbackfee.py                                  | ✓ Passed  | 2 s
+wallet_fast_rescan.py                                  | ✓ Passed  | 12 s
+wallet_fundrawtransaction.py                           | ✓ Passed  | 64 s
+wallet_gethdkeys.py                                    | ✓ Passed  | 2 s
+wallet_groups.py                                       | ✓ Passed  | 17 s
+wallet_hd.py                                           | ✓ Passed  | 10 s
+wallet_importdescriptors.py                            | ✓ Passed  | 49 s
+wallet_importprunedfunds.py                            | ✓ Passed  | 7 s
+wallet_keypool.py                                      | ✓ Passed  | 4 s
+wallet_keypool_topup.py                                | ✓ Passed  | 15 s
+wallet_labels.py                                       | ✓ Passed  | 6 s
 wallet_listdescriptors.py                              | ✓ Passed  | 4 s
-wallet_listreceivedby.py                               | ✓ Passed  | 17 s
+wallet_listreceivedby.py                               | ✓ Passed  | 8 s
 wallet_listsinceblock.py                               | ✓ Passed  | 14 s
-wallet_listtransactions.py                             | ✓ Passed  | 67 s
-wallet_miniscript.py                                   | ✓ Passed  | 183 s
-wallet_miniscript_decaying_multisig_descriptor_psbt.py | ✓ Passed  | 11 s
-wallet_multisig_descriptor_psbt.py                     | ✓ Passed  | 13 s
-wallet_multiwallet.py                                  | ✓ Passed  | 76 s
-wallet_multiwallet.py --usecli                         | ✓ Passed  | 116 s
-wallet_musig.py                                        | ✓ Passed  | 32 s
-wallet_orphanedreward.py                               | ✓ Passed  | 21 s
-wallet_reindex.py                                      | ✓ Passed  | 16 s
-wallet_reorgsrestore.py                                | ✓ Passed  | 33 s
+wallet_listtransactions.py                             | ✓ Passed  | 24 s
+wallet_miniscript.py                                   | ✓ Passed  | 61 s
+wallet_miniscript_decaying_multisig_descriptor_psbt.py | ✓ Passed  | 6 s
+wallet_multisig_descriptor_psbt.py                     | ✓ Passed  | 10 s
+wallet_multiwallet.py                                  | ✓ Passed  | 23 s
+wallet_multiwallet.py --usecli                         | ✓ Passed  | 25 s
+wallet_musig.py                                        | ✓ Passed  | 14 s
+wallet_orphanedreward.py                               | ✓ Passed  | 10 s
+wallet_reindex.py                                      | ✓ Passed  | 7 s
+wallet_reorgsrestore.py                                | ✓ Passed  | 14 s
 wallet_rescan_unconfirmed.py                           | ✓ Passed  | 2 s
-wallet_resendwallettransactions.py                     | ✓ Passed  | 11 s
-wallet_send.py                                         | ✓ Passed  | 37 s
-wallet_sendall.py                                      | ✓ Passed  | 20 s
-wallet_sendmany.py                                     | ✓ Passed  | 2 s
-wallet_signer.py                                       | ✓ Passed  | 49 s
-wallet_signmessagewithaddress.py                       | ✓ Passed  | 2 s
+wallet_resendwallettransactions.py                     | ✓ Passed  | 6 s
+wallet_send.py                                         | ✓ Passed  | 20 s
+wallet_sendall.py                                      | ✓ Passed  | 9 s
+wallet_sendmany.py                                     | ✓ Passed  | 1 s
+wallet_signer.py                                       | ✓ Passed  | 18 s
+wallet_signmessagewithaddress.py                       | ✓ Passed  | 5 s
 wallet_signrawtransactionwithwallet.py                 | ✓ Passed  | 5 s
 wallet_simulaterawtx.py                                | ✓ Passed  | 4 s
-wallet_spend_unconfirmed.py                            | ✓ Passed  | 7 s
-wallet_startup.py                                      | ✓ Passed  | 6 s
-wallet_taproot.py                                      | ✓ Passed  | 408 s
-wallet_timelock.py                                     | ✓ Passed  | 3 s
-wallet_transactiontime_rescan.py                       | ✓ Passed  | 30 s
-wallet_txn_clone.py                                    | ✓ Passed  | 13 s
-wallet_txn_clone.py --mineblock                        | ✓ Passed  | 28 s
-wallet_txn_clone.py --segwit                           | ✓ Passed  | 12 s
-wallet_txn_doublespend.py                              | ✓ Passed  | 9 s
-wallet_txn_doublespend.py --mineblock                  | ✓ Passed  | 7 s
-wallet_v3_txs.py                                       | ✓ Passed  | 10 s
+wallet_spend_unconfirmed.py                            | ✓ Passed  | 5 s
+wallet_startup.py                                      | ✓ Passed  | 8 s
+wallet_taproot.py                                      | ✓ Passed  | 76 s
+wallet_timelock.py                                     | ✓ Passed  | 1 s
+wallet_transactiontime_rescan.py                       | ✓ Passed  | 15 s
+wallet_txn_clone.py                                    | ✓ Passed  | 4 s
+wallet_txn_clone.py --mineblock                        | ✓ Passed  | 6 s
+wallet_txn_clone.py --segwit                           | ✓ Passed  | 5 s
+wallet_txn_doublespend.py                              | ✓ Passed  | 5 s
+wallet_txn_doublespend.py --mineblock                  | ✓ Passed  | 5 s
+wallet_v3_txs.py                                       | ✓ Passed  | 21 s
 feature_bind_port_discover.py                          | ○ Skipped | 0 s
 feature_bind_port_externalip.py                        | ○ Skipped | 0 s
-feature_coinstatsindex_compatibility.py                | ○ Skipped | 1 s
-feature_unsupported_utxo_db.py                         | ○ Skipped | 1 s
-interface_ipc.py                                       | ○ Skipped | 1 s
-interface_ipc_mining.py                                | ○ Skipped | 1 s
+feature_coinstatsindex_compatibility.py                | ○ Skipped | 0 s
+feature_unsupported_utxo_db.py                         | ○ Skipped | 0 s
+interface_ipc.py                                       | ○ Skipped | 0 s
+interface_ipc_mining.py                                | ○ Skipped | 0 s
 interface_usdt_coinselection.py                        | ○ Skipped | 0 s
-interface_usdt_mempool.py                              | ○ Skipped | 1 s
+interface_usdt_mempool.py                              | ○ Skipped | 0 s
 interface_usdt_net.py                                  | ○ Skipped | 0 s
-interface_usdt_utxocache.py                            | ○ Skipped | 1 s
-interface_usdt_validation.py                           | ○ Skipped | 1 s
-interface_zmq.py                                       | ○ Skipped | 1 s
-mempool_compatibility.py                               | ○ Skipped | 1 s
+interface_usdt_utxocache.py                            | ○ Skipped | 0 s
+interface_usdt_validation.py                           | ○ Skipped | 0 s
+interface_zmq.py                                       | ○ Skipped | 0 s
+mempool_compatibility.py                               | ○ Skipped | 0 s
 tool_bench_sanity_check.py                             | ○ Skipped | 0 s
 tool_bitcoin_chainstate.py                             | ○ Skipped | 0 s
 wallet_backwards_compatibility.py                      | ○ Skipped | 0 s
 wallet_migration.py                                    | ○ Skipped | 0 s
-feature_config_args.py                                 | ✖ Failed  | 19 s
-p2p_dns_seeds.py                                       | ✖ Failed  | 28 s
-rpc_getblockfilter.py                                  | ✖ Failed  | 28 s
 
-ALL                                                    | ✖ Failed  | 9148 s (accumulated) 
-Runtime: 2327 s
+ALL                                                    | ✓ Passed  | 4728 s (accumulated) 
+Runtime: 1219 s
 
