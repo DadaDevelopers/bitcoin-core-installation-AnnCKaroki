@@ -1,0 +1,73 @@
+Bitcoin Core daemon version v30.99.0-d198635fa2d4 bitcoind
+Copyright (C) 2009-2026 The Bitcoin Core developers
+
+Please contribute if you find Bitcoin Core useful. Visit
+<https://bitcoincore.org/> for further information about the software.
+The source code is available from <https://github.com/bitcoin/bitcoin>.
+
+This is experimental software.
+Distributed under the MIT software license, see the accompanying file COPYING
+or <https://opensource.org/license/MIT>
+{
+  "chain": "main",
+  "blocks": 343379,
+  "headers": 940288,
+  "bestblockhash": "00000000000000000219cf2f8063f065452ccafd103892ad5a6de567bffa074f",
+  "bits": "1818bb87",
+  "target": "000000000000000018bb87000000000000000000000000000000000000000000",
+  "difficulty": 44455415962.3438,
+  "time": 1423888346,
+  "mediantime": 1423886857,
+  "verificationprogress": 0.04506547745918009,
+  "initialblockdownload": true,
+  "chainwork": "00000000000000000000000000000000000000000004b0365db122123be7a914",
+  "size_on_disk": 35226637275,
+  "pruned": false,
+  "warnings": [
+    "This is a pre-release test build - use at your own risk - do not use for mining or merchant applications"
+  ]
+}
+343632
+{
+  "blocks": 343632,
+  "bits": "1818bb87",
+  "difficulty": 44455415962.3438,
+  "target": "000000000000000018bb87000000000000000000000000000000000000000000",
+  "networkhashps": 3.397917358418643e+17,
+  "pooledtx": 0,
+  "blockmintxfee": 0.00000001,
+  "chain": "main",
+  "next": {
+    "height": 343633,
+    "bits": "1818bb87",
+    "difficulty": 44455415962.3438,
+    "target": "000000000000000018bb87000000000000000000000000000000000000000000"
+  },
+  "warnings": [
+    "This is a pre-release test build - use at your own risk - do not use for mining or merchant applications"
+  ]
+}
+[
+]
+{
+  "blocks": 345623,
+  "bits": "18178d3a",
+  "difficulty": 46684376316.86029,
+  "target": "0000000000000000178d3a000000000000000000000000000000000000000000",
+  "networkhashps": 3.252891277195203e+17,
+  "pooledtx": 0,
+  "blockmintxfee": 0.00000001,
+  "chain": "main",
+  "next": {
+    "height": 345624,
+    "bits": "18178d3a",
+    "difficulty": 46684376316.86029,
+    "target": "0000000000000000178d3a000000000000000000000000000000000000000000"
+  },
+  "warnings": [
+    "This is a pre-release test build - use at your own risk - do not use for mining or merchant applications"
+  ]
+}
+tb1qup5fraz2apfcfwc9d0h0vrvxxd969acphufkyz
+[
+]
